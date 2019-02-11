@@ -1,0 +1,32 @@
+<h2> Member Profile </h2>
+
+<h3> {{ theMember.name }} </h3>
+
+{{!-- <p> --}}
+  {{!-- Fee: --}}
+  {{!-- <b> ${{ theLaunderer.fee }} </b> --}}
+{{!-- </p> --}}
+
+
+<h3>
+  Schedule of the Events  With
+  <i> {{ theMember.name }} </i>
+</h3>
+
+<form action="/events" method="post">
+  <div>
+    <label for="pickup-date-input">
+      When would you like your event picked up?
+    </label>
+    <input type="date" name="eventDate" id="event-date-input">
+  </div>
+
+  <input type="hidden" name="memberId" value="{{ theMember._id }}">
+
+  <button> Schedule This Events </button>
+</form>
+
+
+<a href="/member">
+  Find Another Member
+</a>
