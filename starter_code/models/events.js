@@ -8,7 +8,6 @@ const eventSchema = new Schema({
   eventDate: Date,
   user: { type: Schema.Types.ObjectId, ref: 'User' },
   member: { type: Schema.Types.ObjectId, ref: 'User' }
-  
 });
 
 eventSchema.set('timestamps', true);

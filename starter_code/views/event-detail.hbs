@@ -1,3 +1,11 @@
+<a href="/events">Return</a>
 <h1>{{event.title}}</h1>
 <p>{{event.description}}</p>
-<a href="/events">Return</a>
+
+<form action="/events/{{event.id}}" method="post">
+<label>Coment:</label>
+<textarea rows="10" cols="80">{{event.posts}}</textarea>
+<button type="submit">ADD</button>
+</form>
+
+
