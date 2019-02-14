@@ -1,36 +1,37 @@
-<h2> Sign Up </h2>
-
 {{#if errorMessage}}
   <p class="error-message">
     {{ errorMessage }}
   </p>
 {{/if}}
-
+<div class="container">
+  <h2> Sign Up </h2>
 <form action="/signup" method="post">
-  <div>
-    <label for="name-input"> Name </label>
+  <div class="user_icon">
     <input type="text" name="name" id="name-input"
-      placeholder="e.g., Diana Prince">
+      placeholder="Your name">
+    <i class="fas fa-user"></i>
   </div>
 
-  <div>
-    <label for="email-input"> Email </label>
+  <div class="envelope_icon">
     <input type="email" name="email" id="email-input"
-      placeholder="e.g., diana@themyscira.agency">
+      placeholder="diana@themyscira.agency">
+    <i class="fas fa-envelope"></i>
   </div>
 
-  <div>
-    <label for="password-input"> Password </label>
+  <div class="lock_icon">
     <input type="password" name="password" id="password-input"
-      placeholder="e.g., ••••••••••••">
+      placeholder="••••••••••••">
+    <i class="fas fa-lock"></i>
   </div>
 
   <button> Create New Account </button>
 </form>
-
+</div>
+<div class="container">
 <p>
   Already have an account?
   <a href="/login">
     Log in.
   </a>
 </p>
+</div>

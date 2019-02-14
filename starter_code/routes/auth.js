@@ -36,7 +36,7 @@ router.post('/signup', (req, res, next) => {
       });
       return;
     }
-
+//console.log('passaword null', req.body); sem criptografia, ver no terminal.
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashedPass = bcrypt.hashSync(passwordInput, salt);  
     const userSubmission = {
@@ -44,7 +44,8 @@ router.post('/signup', (req, res, next) => {
       email: emailInput,
       password: hashedPass
     };  
-    const theUser = new User(userSubmission)  
+//console.log('passaword ok', userSubmission); com criptografia
+    const theUser = new User(userSubmission);  
     theUser.save((err) => {
       if (err) {
         res.render('auth/signup', {

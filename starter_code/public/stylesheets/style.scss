@@ -1,8 +1,21 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+//Abstract
+@import 'abstract/_color';
+@import 'abstract/_breakpoints';
 
-a {
-  color: #00B7FF;
-}
+//Base
+@import 'base/_reset';
+@import 'base/_fonts';
+@import 'base/_normalize';
+
+
+//Layout
+@import 'layout/_container';
+@import 'layout/_img';
+@import 'layout/_body';
+@import 'layout/_footer';
+
+//Page
+@import 'pages/_login';
+@import 'pages/_signup';
+
+

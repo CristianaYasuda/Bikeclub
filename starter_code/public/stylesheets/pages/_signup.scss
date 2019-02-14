@@ -1,0 +1,15 @@
+.envelope_icon input{
+    padding-left: 40px;
+    
+    &_icon{
+      position: relative;
+    }
+    
+    &_icon i{
+      position: absolute;
+      left: 18vh;
+      top: 4px;
+      padding: 4px 8px;
+    }
+  }
+  
