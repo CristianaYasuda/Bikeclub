@@ -10,9 +10,10 @@
 <nav>
   <ul>
     {{#if isUserLoggedIn }}
-     {{!-- <img src="{{this.imgPath}}" alt=""> --}}
-      <li> <a href="/member"> Find a Member </a> </li>
-      <li> <a href="/Events"> Events </a> </li>
+
+     <li> <a href="/profile/{{user._id}}"> Profile </a> </li>
+      <li> <a href="/events"> Events </a> </li>
+
       <li> <a href="/logout"> Log Out </a> </li>
     {{else}}
       <li> <a href="/signup"> Sign Up </a> </li>
@@ -20,4 +21,4 @@
     {{/if}}
   </ul>
 </nav>
-</div>
+
