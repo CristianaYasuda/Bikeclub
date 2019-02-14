@@ -7,10 +7,12 @@ const eventSchema = new Schema({
   description: String,
   eventDate: Date,
   user: { type: Schema.Types.ObjectId, ref: 'User' },
-  member: { type: Schema.Types.ObjectId, ref: 'User' }
+  member: { type: Schema.Types.ObjectId, ref: 'User' },
+  location: { type: { type: String }, coordinates: [Number] }
 });
 
-eventSchema.set('timestamps', true);
+// eventSchema.set('timestamps', true);  
+eventSchema.index({ location: '2dsphere' });
 
 const Events = mongoose.model('Event', eventSchema);
 
