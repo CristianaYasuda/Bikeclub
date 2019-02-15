@@ -77,7 +77,11 @@ router.post('/event/add', (req, res, next) => {
     type: 'Point',
     coordinates: [req.body.longitude, req.body.latitude]
   };
-  const newEvent = new Events({ title, description, location });
+  const locationEnd = {
+    type: 'Point',
+    coordinates: [req.body.longitudeEnd, req.body.latitudeEnd]
+  };
+  const newEvent = new Events({ title, description, location, locationEnd });
   newEvent
     .save()
     .then(() => {

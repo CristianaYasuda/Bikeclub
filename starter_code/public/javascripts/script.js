@@ -31,13 +31,37 @@ function placeEvents(event) {
     lat: event.location.coordinates[1],
     lng: event.location.coordinates[0]
   };
+  const centerEnd = {
+    lat: event.locationEnd.coordinates[1],
+    lng: event.locationEnd.coordinates[0]
+  };
   const pin = new google.maps.Marker({
     position: center,
     map,
     title: event.name
   });
   markers.push(pin);
-  // });
+  map.setCenter(center);
+  const directionsService = new google.maps.DirectionsService();
+  const directionsDisplay = new google.maps.DirectionsRenderer();
+
+  const directionRequest = {
+    origin: center,
+    destination: centerEnd,
+    travelMode: 'BICYCLING'
+  };
+
+  directionsService.route(directionRequest, (response, status) => {
+    if (status === "OK") {
+      // everything is ok
+      directionsDisplay.setDirections(response);
+    } else {
+      // something went wrong
+      window.alert("Directions request failed due to " + status);
+    }
+  });
+
+  directionsDisplay.setMap(map);
 }
 
 function getEvent() {
@@ -57,36 +81,44 @@ const geocoder = new google.maps.Geocoder();
 // });
 
 document.getElementById('formCreate').addEventListener('submit', (e) => {
-  if( document.getElementById(
-    "latitude"
-  ).value === '' && document.getElementById(
-    "longitude"
-  ).value ===''){
-    e.preventDefault()
-    geocodeAddress(geocoder)
+  if (
+    document.getElementById('latitude').value === ''
+    && document.getElementById('latitudeEnd').value === ''
+    && document.getElementById('longitude').value === ''
+    && document.getElementById('longitudeEnd').value === ''
+  ) {
+    e.preventDefault();
+    geocodeAddress(geocoder);
   }
 });
 
 function geocodeAddress(geocoder, resultsMap) {
   const address = document.getElementById('address').value;
   geocoder.geocode({ address }, (results, status) => {
-    if (status === "OK") {
-      /*
-   resultsMap.setCenter(results[0].geometry.location);
-   let marker = new google.maps.Marker({
-    map: resultsMap,
-    position: results[0].geometry.location
-   });
-   */
+    if (status === 'OK') {
       document.getElementById(
-        "latitude"
+        'latitude'
       ).value = results[0].geometry.location.lat();
       document.getElementById(
-        "longitude"
+        'longitude'
       ).value = results[0].geometry.location.lng();
-      document.getElementById('formCreate').submit();
+      document.getElementById('formSubmit').click();
     } else {
-      alert("Geocode was not successful for the following reason: " + status);
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+  const addressEnd = document.getElementById('addressEnd').value;
+  geocoder.geocode({ address: addressEnd }, (results, status) => {
+    if (status === 'OK') {
+      document.getElementById(
+        'latitudeEnd'
+      ).value = results[0].geometry.location.lat();
+      document.getElementById(
+        'longitudeEnd'
+      ).value = results[0].geometry.location.lng();
+      document.getElementById('formSubmit').click();
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
     }
   });
 }
