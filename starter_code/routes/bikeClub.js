@@ -29,25 +29,42 @@ router.get('/events/:id', (req, res, next) => {
   const eventId = req.params.id;
   Events.findOne({ _id: eventId })
     .then((event) => {
-      res.render('event-detail', { event });
+      Comments.find({ event: eventId })
+        .populate('user')
+        .exec((err, comments) => {
+          if (err) return 'Error populating User in Comments';
+          // console.log('Comments: ', comments);
+          res.render('event-detail', { event, comments });
+        });
+    })
+    .catch(err => console.log(err));
+});
+
+router.post('/events/:id', (req, res, next) => {
+  const { text } = req.body;
+  const newComment = new Comments({
+    user: req.session.currentUser._id,
+    event: req.params.id,
+    text
+  });
+  newComment
+    .save()
+    .then(() => {
+      res.redirect(`/events/${req.params.id}`);
     })
     .catch((error) => {
       console.log(error);
     });
 });
 
-router.post('/events/:id ', (req, res, next) => {
-  const { text } = req.body;
-  User.findById(req.session.currentUser._id)
-  const newComment = new Comments({ user: req.params.id, event: req.params.id, text });
-  newComment
-    .save()
+router.post('/events/del/:id/:eventID', (req, res, next) => {
+  // delete comments
+  Comments.deleteOne({ _id: req.params.id })
     .then(() => {
-      res.redirect(req.get('referer'));
-      // res.redirect(`/events/${req.params.id}`);
+      res.redirect(`/events/${req.params.eventID}`);
     })
-    .catch((error) => {
-      console.log(error);
+    .catch((err) => {
+      console.log(err);
     });
 });
 
@@ -57,7 +74,11 @@ router.get('/event/add', (req, res, next) => {
 
 router.post('/event/add', (req, res, next) => {
   const { title, description } = req.body;
-  const newEvent = new Events({ title, description });
+  const location = {
+    type: 'Point',
+    coordinates: [req.body.longitude, req.body.latitude]
+  };
+  const newEvent = new Events({ title, description, location });
   newEvent
     .save()
     .then(() => {
@@ -68,10 +89,21 @@ router.post('/event/add', (req, res, next) => {
     });
 });
 
+router.get('/api/:id', (req, res, next) => {
+  const eventId = req.params.id;
+  Events.findOne({ _id: eventId }, (error, oneEventFromDB) => {
+    if (error) {
+      next(error);
+    } else {
+      res.status(200).json({ event: oneEventFromDB });
+    }
+  });
+});
+
 router.post('/event/edit', (req, res, next) => {
   // envia para o bd os dados
   const { title, description } = req.body;
-  Events.update({ _id: req.query.eventId }, { $set: { title, description } }) // funcao do mongo (CRUD)
+  Events.update({ _id: req.query.eventId }, { $set: { title, description } }) // mongo function (CRUD)
     .then(() => {
       res.redirect('/events');
     })
@@ -102,11 +134,9 @@ router.get('/event/del/:id', (req, res, next) => {
 });
 
 router.get('/profile', (req, res, next) => {
-  // const userId = req.params.id;
   User.findById(req.session.currentUser._id)
     .then((user) => {
       res.render('profile-detail', { user });
-      // console.log('truta', user);
     })
     .catch((error) => {
       console.log(error);
