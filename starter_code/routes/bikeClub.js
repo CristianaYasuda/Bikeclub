@@ -4,7 +4,6 @@ const User = require('../models/User');
 const Events = require('../models/Events');
 const Comments = require('../models/Comment');
 
-
 const router = express.Router();
 
 router.use((req, res, next) => {
@@ -57,7 +56,6 @@ router.post('/events/:id', (req, res, next) => {
 });
 
 router.post('/events/del/:id/:eventID', (req, res, next) => {
-  // delete comments
   Comments.deleteOne({ _id: req.params.id })
     .then(() => {
       res.redirect(`/events/${req.params.eventID}`);
@@ -104,9 +102,8 @@ router.get('/api/:id', (req, res, next) => {
 });
 
 router.post('/event/edit', (req, res, next) => {
-  // envia para o bd os dados
   const { title, description } = req.body;
-  Events.update({ _id: req.query.eventId }, { $set: { title, description } }) // mongo function (CRUD)
+  Events.update({ _id: req.query.eventId }, { $set: { title, description } })
     .then(() => {
       res.redirect('/events');
     })
@@ -116,8 +113,7 @@ router.post('/event/edit', (req, res, next) => {
 });
 
 router.get('/event/edit/:id', (req, res, next) => {
-  // faz alteracao dos dados da view edit do usuario no contexto
-  Events.findOne({ _id: req.params.id }) // funcao do mongo (CRUD)
+  Events.findOne({ _id: req.params.id })
     .then((event) => {
       res.render('event-edit', { event });
     })
@@ -144,18 +140,6 @@ router.get('/profile', (req, res, next) => {
     .catch((error) => {
       console.log(error);
     });
-});
-
-router.get('/member', (req, res, next) => {
-  User.find({ isMember: true }, (err, membersList) => {
-    if (err) {
-      next(err);
-      return;
-    }
-    res.render('bikeClub/member', {
-      members: membersList
-    });
-  });
 });
 
 router.post('/events', (req, res, next) => {

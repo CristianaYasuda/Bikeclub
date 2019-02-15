@@ -36,16 +36,15 @@ router.post('/signup', (req, res, next) => {
       });
       return;
     }
-//console.log('passaword null', req.body); sem criptografia, ver no terminal.
+
     const salt = bcrypt.genSaltSync(bcryptSalt);
-    const hashedPass = bcrypt.hashSync(passwordInput, salt);  
+    const hashedPass = bcrypt.hashSync(passwordInput, salt);
     const userSubmission = {
       user: nameInput,
       email: emailInput,
       password: hashedPass
-    };  
-//console.log('passaword ok', userSubmission); com criptografia
-    const theUser = new User(userSubmission);  
+    };
+    const theUser = new User(userSubmission);
     theUser.save((err) => {
       if (err) {
         console.log(err);

@@ -28,13 +28,11 @@ const debug = require('debug')(
 
 const app = express();
 
-// Middleware Setup
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// Express View engine setup
 app.use(
   session({
     secret: 'bike club',
@@ -71,7 +69,6 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-// default value for title local
 app.locals.title = 'Bike Club';
 
 const index = require('./routes/index');

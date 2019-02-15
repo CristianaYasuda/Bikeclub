@@ -1,6 +1,6 @@
 let map;
 const markers = [];
-  
+
 window.onload = () => {
   const ironhackBCN = {
     lng: -46.634818,
@@ -26,7 +26,6 @@ const id = url.slice(index + 1);
 
 function placeEvents(event) {
   console.log(event);
-  // event.forEach((event) => {
   const center = {
     lat: event.location.coordinates[1],
     lng: event.location.coordinates[0]
@@ -52,12 +51,10 @@ function placeEvents(event) {
   };
 
   directionsService.route(directionRequest, (response, status) => {
-    if (status === "OK") {
-      // everything is ok
+    if (status === 'OK') {
       directionsDisplay.setDirections(response);
     } else {
-      // something went wrong
-      window.alert("Directions request failed due to " + status);
+      window.alert('Directions request failed due to ' + status);
     }
   });
 
