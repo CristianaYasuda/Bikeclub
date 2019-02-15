@@ -331,25 +331,45 @@ img {
 
 body {
   padding: 50px;
-  background-color: #ee522f;
+  background-color: #61D5B0;
   color: #363c42;
   text-align: center; }
 
 img {
-  padding-bottom: 8vh; }
+  padding-bottom: 8vh;
+  color: #363c42; }
 
 a {
+  color: #363c42;
+  text-decoration: none; }
+
+a:hover {
   color: #363c42;
   text-decoration: none; }
 
 ul {
   list-style: none; }
 
-footer p {
-  margin-top: 9rem; }
+button {
+  width: 18rem;
+  height: 2rem;
+  color: #000000;
+  font-size: 15px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  margin: 10px auto; }
 
-form {
-  padding: 10vh; }
+input {
+  border-radius: 6px;
+  text-align: center; }
+
+li {
+  margin-top: 5px;
+  margin-bottom: 10px; }
+
+footer p {
+  margin-top: 3rem; }
 
 div input {
   width: 18rem;
@@ -383,15 +403,6 @@ div input {
   position: absolute;
   top: 5px;
   padding: 4px 8px; }
-
-button {
-  width: 18rem;
-  height: 2rem;
-  color: #000000;
-  font-size: 15px;
-  border-radius: 6px;
-  box-sizing: border-box;
-  text-align: center; }
 
 .user_icon input {
   padding-left: 6vh;
@@ -430,10 +441,17 @@ button {
   padding: 4px 8px; }
 
 li {
+  text-align: center; }
+
+li {
   list-style: none; }
 
 .map {
   height: 500px;
   width: 100%; }
+
+.edit_area {
+  display: block;
+  margin: 0 auto; }
 
 /*# sourceMappingURL=style.css.map */

@@ -13,7 +13,7 @@ const MongoStore = require('connect-mongo')(session);
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/uber-for-loundry', { useNewUrlParser: true })
+  .connect('mongodb://localhost/bike-club', { useNewUrlParser: true })
   .then(() => {
     console.log('Connected to Mongo!');
   })
@@ -37,7 +37,7 @@ app.use(cookieParser());
 // Express View engine setup
 app.use(
   session({
-    secret: 'never do your own laundry again',
+    secret: 'bike club',
     resave: true,
     saveUninitialized: true,
     cookie: { maxAge: 24 * 60 * 60 * 1000 },
