@@ -8,8 +8,8 @@
 <nav>
   <ul>
     {{#if isUserLoggedIn }}
-     <li> <a href="/member"> Find a Member </a> </li>
-      <li> <a href="/Events"> Events </a> </li>
+     <li> <a href="/profile/{{user._id}}"> Profile </a> </li>
+      <li> <a href="/events"> Events </a> </li>
       <li> <a href="/logout"> Log Out </a> </li>
     {{else}}
       <li> <a href="/signup"> Sign Up </a> </li>
@@ -17,14 +17,3 @@
     {{/if}}
   </ul>
 </nav>
-
-{{!-- <p>Welcome to {{title}}</p> --}}
-{{!-- <nav> --}}
-  {{!-- <ul> --}}
-    {{!-- <li> <a href="/signup"> Sign Up </a> </li> --}}
-    {{!-- <li> <a href="/login"> Log In </a> </li> --}}
-    {{!-- <li> <a href="/launderers"> Find a Launderer </a> </li> --}}
-    {{!-- <li> <a href="/dashboard"> See Dashboard </a> </li> --}}
-    {{!-- <li> <a href="/logout"> Log Out </a> </li> --}}
-  {{!-- </ul> --}}
-{{!-- </nav> --}}
