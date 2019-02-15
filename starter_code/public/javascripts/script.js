@@ -76,9 +76,6 @@ function getEvent() {
 }
 
 const geocoder = new google.maps.Geocoder();
-// document.getElementById('getLatLng').addEventListener('click', () => {
-//   geocodeAddress(geocoder);
-// });
 
 document.getElementById('formCreate').addEventListener('submit', (e) => {
   if (

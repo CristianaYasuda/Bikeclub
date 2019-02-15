@@ -11,8 +11,7 @@ const eventSchema = new Schema({
   location: { type: { type: String }, coordinates: [Number] },
   locationEnd: { type: { type: String }, coordinates: [Number] }
 });
-
-// eventSchema.set('timestamps', true);  
+ 
 eventSchema.index({ location: '2dsphere' });
 eventSchema.index({ locationEnd: '2dsphere' });
 

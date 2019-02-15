@@ -33,7 +33,6 @@ router.get('/events/:id', (req, res, next) => {
         .populate('user')
         .exec((err, comments) => {
           if (err) return 'Error populating User in Comments';
-          // console.log('Comments: ', comments);
           res.render('event-detail', { event, comments });
         });
     })

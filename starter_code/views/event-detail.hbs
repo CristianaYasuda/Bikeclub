@@ -1,20 +1,20 @@
 {{#if errorMessage}}
-  <p class="error-message">
-    {{ errorMessage }}
-  </p>
+<p class="error-message">
+  {{ errorMessage }}
+</p>
 {{/if}}
 
 
 <a href="/events">Return</a>
 <h1>{{event.title}}</h1>
 <p>{{event.description}}</p>
-  <div id="map" class='map'></div>
+<div id="map" class='map'></div>
 
 {{#each comments}}
 <div>
-  <span><b> Name:</b> {{user.name}}</span>
+  <span><b> Name:</b> {{user.user}}</span>
   <label>Says:</label>
-  <p>{{text}}</p> 
+  <p>{{text}}</p>
   <form action="/events/del/{{id}}/{{event}}" method="POST">
     <button name='text'>Delete this Comment</button>
   </form>
@@ -31,5 +31,3 @@
   <textarea rows="10" cols="80" name="text"></textarea>
   <button type="submit">ADD</button>
 </form>
-
-
