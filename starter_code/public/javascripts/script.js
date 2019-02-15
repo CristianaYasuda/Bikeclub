@@ -1,6 +1,6 @@
 let map;
 const markers = [];
-
+  
 window.onload = () => {
   const ironhackBCN = {
     lng: -46.634818,

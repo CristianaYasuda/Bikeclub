@@ -10,9 +10,6 @@ const logger = require('morgan');
 const path = require('path');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-const index = require('./routes/index');
-const authRoutes = require('./routes/auth');
-const bikeClubRoutes = require('./routes/bikeClub');
 
 mongoose.Promise = Promise;
 mongoose
@@ -62,16 +59,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', index);
-app.use('/', authRoutes);
-app.use('/', bikeClubRoutes);
-app.use(
-  require('node-sass-middleware')({
-    src: path.join(__dirname, 'public'),
-    dest: path.join(__dirname, 'public'),
-    sourceMap: true
-  })
-);
+app.use(require('node-sass-middleware')({
+  src:  path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  sourceMap: true
+}));
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -80,5 +73,14 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 // default value for title local
 app.locals.title = 'Bike Club';
+
+const index = require('./routes/index');
+const authRoutes = require('./routes/auth');
+const bikeClubRoutes = require('./routes/bikeClub');
+
+app.use('/', index);
+app.use('/', authRoutes);
+app.use('/', bikeClubRoutes);
+
 
 module.exports = app;

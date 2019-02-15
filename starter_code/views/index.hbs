@@ -1,15 +1,19 @@
 <!-- views/index.hbs -->
+<div class="container">
 <p> Welcome to {{ title }}. </p>
 
 {{#if isUserLoggedIn }}
   <p> Hello, {{ currentUserInfo.name }}. </p>
 {{/if}}
-
+</div>
+<div class="container">
 <nav>
   <ul>
     {{#if isUserLoggedIn }}
+
      <li> <a href="/profile/{{user._id}}"> Profile </a> </li>
       <li> <a href="/events"> Events </a> </li>
+
       <li> <a href="/logout"> Log Out </a> </li>
     {{else}}
       <li> <a href="/signup"> Sign Up </a> </li>
@@ -17,3 +21,4 @@
     {{/if}}
   </ul>
 </nav>
+

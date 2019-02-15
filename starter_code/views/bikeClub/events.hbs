@@ -1,0 +1,9 @@
+<h1>Events</h1>
+{{#each eventsList}}
+    <p><a href="events/{{this._id}}"> {{this.title}}</a> # 
+    <a href="/event/edit/{{this._id}}">Edit this Event</a> #
+    <a href="/event/del/{{this._id}}">Delete this Event</a>
+    </p>
+{{/each}}
+    <a href="/event/add">Click to Add a new Event</a>
+    <li><a href="/">Return</a></li>

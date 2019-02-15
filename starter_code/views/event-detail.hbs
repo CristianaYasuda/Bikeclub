@@ -1,9 +1,14 @@
+{{#if errorMessage}}
+  <p class="error-message">
+    {{ errorMessage }}
+  </p>
+{{/if}}
 
 
 <a href="/events">Return</a>
 <h1>{{event.title}}</h1>
 <p>{{event.description}}</p>
-  <div id="map"></div>
+  <div id="map" class='map'></div>
 
 {{#each comments}}
 <div>
