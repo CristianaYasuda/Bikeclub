@@ -29,7 +29,7 @@ router.post('/signup', (req, res, next) => {
     if (err) {
       next(err);
       return;
-    }  
+    }
     if (existingUser !== null) {
       res.render('auth/signup', {
         errorMessage: `The email ${emailInput} is already in use.`
@@ -40,7 +40,7 @@ router.post('/signup', (req, res, next) => {
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashedPass = bcrypt.hashSync(passwordInput, salt);  
     const userSubmission = {
-      name: nameInput,
+      user: nameInput,
       email: emailInput,
       password: hashedPass
     };  
@@ -48,6 +48,7 @@ router.post('/signup', (req, res, next) => {
     const theUser = new User(userSubmission);  
     theUser.save((err) => {
       if (err) {
+        console.log(err);
         res.render('auth/signup', {
           errorMessage: 'Something went wrong. Try again later.'
         });

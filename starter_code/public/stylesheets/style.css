@@ -360,29 +360,27 @@ div input {
   padding: 15px;
   box-sizing: border-box; }
 
-.user_icon input {
+.user_icon_login input {
   padding-left: 6vh;
   margin-bottom: 1vh; }
 
-.user_icon {
+.user_icon_login {
   position: relative; }
 
-.user_icon i {
+.user_icon_login i {
   position: absolute;
-  left: 8vh;
   top: 5px;
   padding: 4px 8px; }
 
-.lock_icon input {
+.lock_icon_login input {
   padding-left: 6vh;
   margin-bottom: 1vh; }
 
-.lock_icon {
+.lock_icon_login {
   position: relative; }
 
-.lock_icon i {
+.lock_icon_login i {
   position: absolute;
-  left: 8vh;
   top: 5px;
   padding: 4px 8px; }
 
@@ -395,14 +393,47 @@ button {
   box-sizing: border-box;
   text-align: center; }
 
+.user_icon input {
+  padding-left: 6vh;
+  margin-bottom: 1vh; }
+
+.user_icon {
+  position: relative; }
+
+.user_icon i {
+  position: absolute;
+  top: 5px;
+  padding: 4px 8px; }
+
 .envelope_icon input {
-  padding-left: 40px; }
-  .envelope_icon input_icon {
-    position: relative; }
-  .envelope_icon input_icon i {
-    position: absolute;
-    left: 18vh;
-    top: 4px;
-    padding: 4px 8px; }
+  padding-left: 40px;
+  margin-bottom: 1vh; }
+
+.envelope_icon {
+  position: relative; }
+
+.envelope_icon i {
+  position: absolute;
+  top: 4px;
+  padding: 4px 8px; }
+
+.lock_icon input {
+  padding-left: 6vh;
+  margin-bottom: 1vh; }
+
+.lock_icon {
+  position: relative; }
+
+.lock_icon i {
+  position: absolute;
+  top: 5px;
+  padding: 4px 8px; }
+
+li {
+  list-style: none; }
+
+.map {
+  height: 500px;
+  width: 100%; }
 
 /*# sourceMappingURL=style.css.map */

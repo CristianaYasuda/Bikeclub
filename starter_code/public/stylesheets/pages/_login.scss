@@ -14,34 +14,32 @@ form{
     box-sizing: border-box;
   }
   
-  .user_icon input{
+  .user_icon_login input{
     padding-left: 6vh;
     margin-bottom: 1vh;
   }
   
-  .user_icon{
+  .user_icon_login{
     position: relative;
   }
   
-  .user_icon i{
+  .user_icon_login i{
     position: absolute;
-    left: 8vh;
     top: 5px;
     padding: 4px 8px;
   }
   
-  .lock_icon input{
+  .lock_icon_login input{
     padding-left: 6vh;
     margin-bottom: 1vh;
   }
   
-  .lock_icon{
+  .lock_icon_login{
     position: relative;
   }
   
-  .lock_icon i{
+  .lock_icon_login i{
     position: absolute;
-    left: 8vh;
     top: 5px;
     padding: 4px 8px;
   }
