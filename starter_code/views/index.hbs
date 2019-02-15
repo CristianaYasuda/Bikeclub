@@ -3,7 +3,7 @@
 <li> Welcome to {{ title }}. </li>
 
 {{#if isUserLoggedIn }}
-  <li> Hello, {{ currentUserInfo.user }}. </li>
+  <p> Hello, {{ currentUserInfo.user }}. </p>
 {{/if}}
 </div>
 
@@ -11,7 +11,7 @@
   <ul>
     {{#if isUserLoggedIn }}
 
-     <p> <a href="/profile/{{user._id}}"> Profile </a> </p>
+     <li> <a href="/profile/{{user._id}}"> Profile </a> </li>
       <li> <a href="/events"> Events </a> </li>
       <li> <a href="/logout"> Log Out </a> </li>
     {{else}}
