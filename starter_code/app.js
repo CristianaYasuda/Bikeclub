@@ -13,7 +13,7 @@ const MongoStore = require('connect-mongo')(session);
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/bike-club', { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(() => {
     console.log('Connected to Mongo!');
   })
@@ -59,12 +59,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(require('node-sass-middleware')({
-  src:  path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  sourceMap: true
-}));
-
+app.use(
+  require('node-sass-middleware')({
+    src: path.join(__dirname, 'public'),
+    dest: path.join(__dirname, 'public'),
+    sourceMap: true
+  })
+);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -81,6 +82,5 @@ const bikeClubRoutes = require('./routes/bikeClub');
 app.use('/', index);
 app.use('/', authRoutes);
 app.use('/', bikeClubRoutes);
-
 
 module.exports = app;
