@@ -3,12 +3,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  name: String,
+  user: { type: String, required: true, unique: true },
   email: String,
-  password: String,
-  isMember: { type: Boolean, default: false }
-  // isLaunderer: { type: Boolean, default: false },
-  // fee: { type: Number, default: null }
+  password: String
+
 });
 
 userSchema.set('timestamps', true);

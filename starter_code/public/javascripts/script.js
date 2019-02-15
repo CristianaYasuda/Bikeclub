@@ -53,10 +53,9 @@ function placeEvents(event) {
 
   directionsService.route(directionRequest, (response, status) => {
     if (status === "OK") {
-      // everything is ok
+
       directionsDisplay.setDirections(response);
-    } else {
-      // something went wrong
+    } else {    
       window.alert("Directions request failed due to " + status);
     }
   });
@@ -76,9 +75,6 @@ function getEvent() {
 }
 
 const geocoder = new google.maps.Geocoder();
-// document.getElementById('getLatLng').addEventListener('click', () => {
-//   geocodeAddress(geocoder);
-// });
 
 document.getElementById('formCreate').addEventListener('submit', (e) => {
   if (

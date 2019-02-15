@@ -5,9 +5,7 @@ const Schema = mongoose.Schema;
 const eventSchema = new Schema({
   title: String,
   description: String,
-  eventDate: Date,
   user: { type: Schema.Types.ObjectId, ref: 'User' },
-  member: { type: Schema.Types.ObjectId, ref: 'User' },
   location: { type: { type: String }, coordinates: [Number] },
   locationEnd: { type: { type: String }, coordinates: [Number] }
 });
