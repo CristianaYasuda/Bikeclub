@@ -1,10 +1,10 @@
 {
-  "name": "uber-for-loundry",
+  "name": "bike-club",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "dev": "DEBUG=uber-for-loundry:* nodemon ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www"
   },
   "dependencies": {
     "bcrypt": "^3.0.4",
