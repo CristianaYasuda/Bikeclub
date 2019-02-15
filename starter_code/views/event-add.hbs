@@ -1,13 +1,15 @@
-<form action="/event/add" method="post">
+<form action="/event/add" method="post" id="formCreate">
   <label for="">Title:</label>
   <input type="text" name="title">
 
   <label>Address</label>
-  <input type="text" name="latitude" placeholder="latitude">
-  <input type="text" name="longitude" placeholder="longitude">
+  <input type="hidden" name="latitude" id="latitude" placeholder="latitude">
+  <input type="hidden" name="longitude" id="longitude" placeholder="longitude">
+  <input type="text" id="address" placeholder="Adress">
+  {{!-- <button type="button" id="getLatLng" >Get Address</button> --}}
 
   <label for="">Description:</label>
   <textarea type="text" name="description" rows="10" cols="60" style="display: block"> </textarea>
 
-  <button type="submit">ADD</button>
+  <button type="submit"  >ADD</button>
 </form>

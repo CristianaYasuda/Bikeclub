@@ -50,3 +50,43 @@ function getEvent() {
       console.log(error);
     });
 }
+
+const geocoder = new google.maps.Geocoder();
+// document.getElementById('getLatLng').addEventListener('click', () => {
+//   geocodeAddress(geocoder);
+// });
+
+document.getElementById('formCreate').addEventListener('submit', (e) => {
+  if( document.getElementById(
+    "latitude"
+  ).value === '' && document.getElementById(
+    "longitude"
+  ).value ===''){
+    e.preventDefault()
+    geocodeAddress(geocoder)
+  }
+});
+
+function geocodeAddress(geocoder, resultsMap) {
+  const address = document.getElementById('address').value;
+  geocoder.geocode({ address }, (results, status) => {
+    if (status === "OK") {
+      /*
+   resultsMap.setCenter(results[0].geometry.location);
+   let marker = new google.maps.Marker({
+    map: resultsMap,
+    position: results[0].geometry.location
+   });
+   */
+      document.getElementById(
+        "latitude"
+      ).value = results[0].geometry.location.lat();
+      document.getElementById(
+        "longitude"
+      ).value = results[0].geometry.location.lng();
+      document.getElementById('formCreate').submit();
+    } else {
+      alert("Geocode was not successful for the following reason: " + status);
+    }
+  });
+}
